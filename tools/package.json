@@ -2,11 +2,12 @@
   "name": "tools",
   "version": "1.0.0",
   "main": "index.js",
+  "bin": "./bin/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Aman Kumar",
   "license": "ISC",
-  "description": ""
+  "description": "A testing CLI Tool"
 }
