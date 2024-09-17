@@ -1,14 +1,14 @@
 const chalk = require('chalk');
-const pkgUp = require('pkg-up');
+const { cosmiconfigSync } = require('cosmiconfig');
+const configLoader = cosmiconfigSync('tool');
 
 module.exports = function getConfig() {
-  const pkgPath = pkgUp.sync({cwd: process.cwd()});
-  const pkg = require(pkgPath);
-  if (pkg.tool) {
-    console.log('Found configuration', pkg.tool);
-    return pkg.tool;
-  } else {
+  const result = configLoader.search(process.cwd());
+  if (!result) {
     console.log(chalk.yellow('Could not find configuration, using default'));
     return { port: 1234 };
+  } else {
+    console.log('Found configuration', result.config);
+    return result.config;
   }
 }
