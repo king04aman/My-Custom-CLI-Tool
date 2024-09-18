@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 
 const arg = require('arg');
-const chalk = require('chalk');
+const logger = require('../src/logger')('bin');
 const getConfig = require('../src/config/config-mgr');
 const start = require('../src/commands/start');
 
@@ -11,20 +11,19 @@ try {
         '--build': Boolean,
     });
 
+    logger.debug('Received args', args);
+
     if (args['--start']) {
         const config = getConfig();
         start(config);
     }
 } catch (e) {
-    console.log(chalk.yellow(e.message));
+    logger.warning(e.message);
     console.log();
     usage();
 }
 
 function usage() {
-    // console.log(`tool [cmd]
-    //     --start\tStarts the application
-    //     --build\tBuilds the application`);
     console.log(`${chalk.whiteBright('tool [CMD]')}
     ${chalk.greenBright('--start')}\tStarts the app
     ${chalk.greenBright('--build')}\tBuilds the app`);
