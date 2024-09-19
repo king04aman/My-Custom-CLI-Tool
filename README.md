@@ -45,7 +45,7 @@ npm install
 ### Make the tool executable (if necessary):
 
 ```bash
-chmod +x my_cli_tool
+chmod +x tool
 ```
 
 ## Usage
@@ -73,7 +73,7 @@ tool [command] [options] > output.log
 
 To enable debugging logs, you can run:
 ```bash
-DEBUG=my_cli_tool ./my_cli_tool [command] [options]
+DEBUG=* [command] [options]
 ```
 
 ## Contributing
